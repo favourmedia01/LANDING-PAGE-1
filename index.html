@@ -148,11 +148,37 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <strong>YES!</strong> I have these 3 things and I am going to apply this life-changing information once it is in my hands.
     </div>
 
-    <!-- Your Updated WhatsApp Group Link -->
-    <a href="https://chat.whatsapp.com/H3wzZyjeqH1ACJwGfbtaML" class="btn">CLICK HERE TO JOIN THE TRAINING NOW!</a>
+    <!-- FIREBASE-CONTROLLED BUTTON -->
+  <a href="#" id="joinBtn" class="btn">CLICK HERE TO JOIN THE TRAINING NOW!</a>
 
     <footer>© 2026 HIGH PAYING JOBS</footer>
 </div>
 
+    <!-- 🔥 FIREBASE SCRIPT -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC6nIxI9qratZatVZ1Bi5jV0vL86Nt37ws",
+  authDomain: "celeste-4d97f.firebaseapp.com",
+  projectId: "celeste-4d97f",
+  storageBucket: "celeste-4d97f.firebasestorage.app",
+  messagingSenderId: "706639090650",
+  appId: "1:706639090650:web:f43477bd0593887eece6e3"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function loadGroupLink() {
+  const snap = await getDoc(doc(db, "LandingPages", "page1"));
+  if (snap.exists()) {
+    document.getElementById("joinBtn").href = snap.data().groupLink;
+  }
+}
+
+loadGroupLink();
+</script>
 </body>
 </html>
